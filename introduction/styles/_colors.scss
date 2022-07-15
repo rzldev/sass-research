@@ -6,23 +6,31 @@
         background-color: $val;
     }
 
-    // light variations
-    @for $i from 1 through 9 {
-        .test-#{$key}-light-#{$i} {
-            color: mix(white, $val, $i * 10);
+    @if ($val != white and $val != black) {
+        // light variations
+        @for $i from 1 through 9 {
+            .test-#{$key}-light-#{$i} {
+                color: mix(white, $val, $i * 10);
+            }
+            .bg-#{$key}-light-#{$i} {
+                background-color: mix(white, $val, $i * 10);
+            }
         }
-        .bg-#{$key}-light-#{$i} {
-            background-color: mix(white, $val, $i * 10);
-        }
-    }
 
-    // dark variations
-    @for $i from 1 through 9 {
-        .text-#{$key}-dark-#{$i} {
-            color: mix(black, $val, $i * 10);
-        }
-        .bg-#{$key}-dark-#{$i} {
-            background-color: mix(black, $val, $i * 10);
+        // dark variations
+        @for $i from 1 through 9 {
+            .text-#{$key}-dark-#{$i} {
+                color: mix(black, $val, $i * 10);
+            }
+            .bg-#{$key}-dark-#{$i} {
+                background-color: mix(black, $val, $i * 10);
+            }
         }
     }
+}
+
+@if (10 < 5) {
+    @debug "10 is less than 5";
+} @else {
+    @debug "10 is greater than 5";
 }
